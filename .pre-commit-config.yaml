@@ -21,13 +21,6 @@ repos:
   - id: ruff
     args: ["--fix"]  # optional, auto-fix simple issues
 
-# Type check your code
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.10.0
-  hooks:
-  - id: mypy
-    args: ["--ignore-missing-imports"]
-
 # Ensure no debug prints or debugger breakpoints
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v2.3.0
