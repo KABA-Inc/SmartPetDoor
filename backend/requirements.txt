@@ -1,4 +1,5 @@
 cryptography
+DBUtils
 fastapi[standard]
 PyMySQL
 retry

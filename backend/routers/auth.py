@@ -1,6 +1,9 @@
 import logging
 
+from dtos.user import UserCreateDTO
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
+from services.user import user_service
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +16,13 @@ def login():
     return "Login logic goes here..."
 
 
-@router.get("/register")
-def register():
+@router.post("/register")
+def register(user: UserCreateDTO):
     logger.debug("Registering...")
-    return "Register logic goes here..."
+
+    created_user = user_service.create_user(user)
+
+    if created_user:
+        return JSONResponse(content="User created successfuly!", status_code=203)
+    else:
+        return JSONResponse(content="Error occured.", status_code=400)
