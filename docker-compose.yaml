@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:9.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: smartpetdoor
+    ports:
+      - 3306:3306
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: local.Dockerfile
+    environment:
+      LOG_LEVEL: DEBUG
+      HOST: db
+      DATABASE: smartpetdoor
+      USER: root
+      PASSWORD: pass
+    volumes:
+      - ./backend:/backend-dev
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
