@@ -21,3 +21,19 @@ To make life easier a Live Codeing environment is created, which means when you 
 ### Pre-commit
 
 Pretty please install pre-commit before you start developing with `make init` to have a well linted, formatted codebase.
+
+### Branching
+
+#### main branch
+
+The meeting point between HW and SW code changes.
+
+#### dev/backend branch
+
+The meeting point for features. When features are done this is where you should target the PR.
+When a group of features are ready target the main branch with a PR.
+
+#### feature/<short-feature-description> branch
+
+These branches are created from `dev/backend` branch. In these branches smaller features are developed.
+When feature is ready target the `dev/backend` branch with a PR.
