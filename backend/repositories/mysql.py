@@ -27,10 +27,17 @@ class MySQL:
 
     def create_user(self, user: UserModel):
         sql = """
-            INSERT INTO users (id, first_name, last_name, email, password)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO users (id, first_name, last_name, email, username, password)
+            VALUES (%s, %s, %s, %s, %s, %s)
         """
-        params = (user.id, user.first_name, user.last_name, user.email, user.password)
+        params = (
+            user.id,
+            user.first_name,
+            user.last_name,
+            user.email,
+            user.username,
+            user.password,
+        )
 
         conn = self.pool.connection()
         try:
@@ -54,9 +61,15 @@ class MySQL:
 
         return [UserModel(**record) for record in records]
 
-    def get_user(self, id: str) -> UserModel | None:
-        sql = "SELECT * FROM users WHERE id = %s"
-        params = (id,)
+    def get_user(self, id=None, username=None) -> UserModel | None:
+        if id:
+            sql = "SELECT * FROM users WHERE id = %s"
+            params = (id,)
+        elif username:
+            sql = "SELECT * FROM users WHERE username = %s"
+            params = (username,)
+        else:
+            raise Exception("id or username must be specified!")
 
         conn = self.pool.connection()
         try:

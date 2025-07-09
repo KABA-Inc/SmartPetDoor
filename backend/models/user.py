@@ -10,6 +10,7 @@ class UserModel(BaseModel):
     id: str
     first_name: str
     last_name: str
+    username: str
     email: EmailStr
     password: str
 

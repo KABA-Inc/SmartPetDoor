@@ -5,6 +5,7 @@ class UserCreateDTO(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
+    username: str
     password: str
 
 
@@ -13,3 +14,9 @@ class UserDTO(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
+    username: str
+
+
+class UserLoginDTO(BaseModel):
+    username: str
+    password: str

@@ -23,6 +23,9 @@ services:
       DB_DATABASE: smartpetdoor
       DB_USER: root
       DB_PASSWORD: pass
+      TOKEN_SECRET_KEY: superdupersecretkey
+      TOKEN_ALGORITHM: HS256
+      TOKEN_EXPIRE_MINUTES: 60
     volumes:
       - ./backend:/backend-dev
     ports:

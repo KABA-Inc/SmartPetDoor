@@ -1,6 +1,7 @@
 cryptography
 DBUtils
 fastapi[standard]
+PyJWT
 PyMySQL
 retry
 types-retry
