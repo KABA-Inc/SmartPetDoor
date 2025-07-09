@@ -19,8 +19,20 @@ venv: ## Creates virtual environment for backend.
 	python -m venv backend/.venv
 
 .PHONY: up
-up: ## Starts the whole project using docker compose
+up: ## Starts the whole project using docker compose.
 	docker compose up
+
+.PHONY: upd
+upd: ## Starts the whole project using docker compose in the background.
+	docker compose up -d
+
+.PHONY: up-build
+up-build: ## Builds and than starts the whole project using docker compose.
+	docker compose up --build
+
+.PHONY: down
+down: ## Stops the whole project using docker compose.
+	docker compose down
 
 ## Backend targets
 
