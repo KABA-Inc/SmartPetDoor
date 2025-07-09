@@ -9,3 +9,4 @@ class Config:
         DATABASE = os.getenv("DB_DATABASE", "smartpetdoor")
         USER = os.getenv("DB_USER", "root")
         PASSWORD = os.getenv("DB_PASSWORD", "pass")
+        PORT = int(os.getenv("DB_PORT", "3306"))

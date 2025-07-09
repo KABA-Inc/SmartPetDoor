@@ -1,2 +1,6 @@
+cryptography
 fastapi[standard]
 PyMySQL
+retry
+types-retry
+yoyo-migrations

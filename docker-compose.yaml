@@ -1,11 +1,16 @@
 services:
   db:
-    image: mysql:9.3.0
+    image: mysql:8.0.42-debian
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: smartpetdoor
     ports:
       - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 60s
+      retries: 5
 
   backend:
     build:
@@ -13,13 +18,15 @@ services:
       dockerfile: local.Dockerfile
     environment:
       LOG_LEVEL: DEBUG
-      HOST: db
-      DATABASE: smartpetdoor
-      USER: root
-      PASSWORD: pass
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: smartpetdoor
+      DB_USER: root
+      DB_PASSWORD: pass
     volumes:
       - ./backend:/backend-dev
     ports:
       - 8000:8000
     depends_on:
-      - db
+      db:
+        condition: service_healthy
