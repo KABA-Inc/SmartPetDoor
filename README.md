@@ -28,12 +28,12 @@ Pretty please install pre-commit before you start developing with `make init` to
 
 The meeting point between HW and SW code changes.
 
-#### dev/backend branch
+#### dev/sw branch
 
-The meeting point for features. When features are done this is where you should target the PR.
+The meeting point for software features. When features are done this is where you should target the PR.
 When a group of features are ready target the main branch with a PR.
 
 #### feature/<short-feature-description> branch
 
-These branches are created from `dev/backend` branch. In these branches smaller features are developed.
-When feature is ready target the `dev/backend` branch with a PR.
+These branches are created from `dev/sw` branch. In these branches smaller features are developed.
+When feature is ready target the `dev/sw` branch with a PR.
